@@ -1,0 +1,649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EFDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customer_Email" />
+          </Key>
+          <Property Name="customer_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="fax" Type="varchar" MaxLength="50" />
+          <Property Name="website" Type="varchar" MaxLength="50" />
+          <Property Name="Telephone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Demands">
+          <Key>
+            <PropertyRef Name="Customer_Email" />
+            <PropertyRef Name="Wharehouse_Name" />
+            <PropertyRef Name="item_code" />
+          </Key>
+          <Property Name="Customer_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Wharehouse_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="item_code" Type="int" Nullable="false" />
+          <Property Name="demand_Code" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="item">
+          <Key>
+            <PropertyRef Name="item_code" />
+          </Key>
+          <Property Name="item_code" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="itemMeausureUnits">
+          <Key>
+            <PropertyRef Name="item_code" />
+            <PropertyRef Name="meausure_unit_name" />
+          </Key>
+          <Property Name="item_code" Type="int" Nullable="false" />
+          <Property Name="meausure_unit_name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Supplier_Email" />
+          </Key>
+          <Property Name="Supplier_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="fax" Type="varchar" MaxLength="50" />
+          <Property Name="website" Type="varchar" MaxLength="50" />
+          <Property Name="telephone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Supplies">
+          <Key>
+            <PropertyRef Name="supplier_Email" />
+            <PropertyRef Name="Wharehouse_Name" />
+            <PropertyRef Name="item_code" />
+          </Key>
+          <Property Name="supplier_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Wharehouse_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="item_code" Type="int" Nullable="false" />
+          <Property Name="supply_code" Type="int" />
+          <Property Name="data" Type="varchar" MaxLength="50" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="Expiredays" Type="date" />
+          <Property Name="productionDate" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Wharehouse">
+          <Key>
+            <PropertyRef Name="Warehouse_Name" />
+          </Key>
+          <Property Name="Warehouse_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
+          <Property Name="Manager_Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WharehouseItems">
+          <Key>
+            <PropertyRef Name="Wharehouse_Name" />
+            <PropertyRef Name="Item_Code" />
+          </Key>
+          <Property Name="Wharehouse_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Item_Code" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <Association Name="FK_Demands_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customer_Email" />
+            </Principal>
+            <Dependent Role="Demands">
+              <PropertyRef Name="Customer_Email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demands_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="item_code" />
+            </Principal>
+            <Dependent Role="Demands">
+              <PropertyRef Name="item_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demands_Wharehouse">
+          <End Role="Wharehouse" Type="Self.Wharehouse" Multiplicity="1" />
+          <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wharehouse">
+              <PropertyRef Name="Warehouse_Name" />
+            </Principal>
+            <Dependent Role="Demands">
+              <PropertyRef Name="Wharehouse_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_itemMeausureUnits_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="itemMeausureUnits" Type="Self.itemMeausureUnits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="item_code" />
+            </Principal>
+            <Dependent Role="itemMeausureUnits">
+              <PropertyRef Name="item_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplies_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="Supplies" Type="Self.Supplies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="item_code" />
+            </Principal>
+            <Dependent Role="Supplies">
+              <PropertyRef Name="item_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplies_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Supplies" Type="Self.Supplies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Supplier_Email" />
+            </Principal>
+            <Dependent Role="Supplies">
+              <PropertyRef Name="supplier_Email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplies_Wharehouse">
+          <End Role="Wharehouse" Type="Self.Wharehouse" Multiplicity="1" />
+          <End Role="Supplies" Type="Self.Supplies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wharehouse">
+              <PropertyRef Name="Warehouse_Name" />
+            </Principal>
+            <Dependent Role="Supplies">
+              <PropertyRef Name="Wharehouse_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WharehouseItems_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="WharehouseItems" Type="Self.WharehouseItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="item_code" />
+            </Principal>
+            <Dependent Role="WharehouseItems">
+              <PropertyRef Name="Item_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WharehouseItems_Wharehouse">
+          <End Role="Wharehouse" Type="Self.Wharehouse" Multiplicity="1" />
+          <End Role="WharehouseItems" Type="Self.WharehouseItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wharehouse">
+              <PropertyRef Name="Warehouse_Name" />
+            </Principal>
+            <Dependent Role="WharehouseItems">
+              <PropertyRef Name="Wharehouse_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EFDBModelStoreContainer">
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Demands" EntityType="Self.Demands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="item" EntityType="Self.item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="itemMeausureUnits" EntityType="Self.itemMeausureUnits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplies" EntityType="Self.Supplies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wharehouse" EntityType="Self.Wharehouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WharehouseItems" EntityType="Self.WharehouseItems" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Demands_customer" Association="Self.FK_Demands_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="Demands" EntitySet="Demands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demands_item" Association="Self.FK_Demands_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="Demands" EntitySet="Demands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demands_Wharehouse" Association="Self.FK_Demands_Wharehouse">
+            <End Role="Wharehouse" EntitySet="Wharehouse" />
+            <End Role="Demands" EntitySet="Demands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_itemMeausureUnits_item" Association="Self.FK_itemMeausureUnits_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="itemMeausureUnits" EntitySet="itemMeausureUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplies_item" Association="Self.FK_Supplies_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="Supplies" EntitySet="Supplies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplies_Supplier" Association="Self.FK_Supplies_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Supplies" EntitySet="Supplies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplies_Wharehouse" Association="Self.FK_Supplies_Wharehouse">
+            <End Role="Wharehouse" EntitySet="Wharehouse" />
+            <End Role="Supplies" EntitySet="Supplies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WharehouseItems_item" Association="Self.FK_WharehouseItems_item">
+            <End Role="item" EntitySet="item" />
+            <End Role="WharehouseItems" EntitySet="WharehouseItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WharehouseItems_Wharehouse" Association="Self.FK_WharehouseItems_Wharehouse">
+            <End Role="Wharehouse" EntitySet="Wharehouse" />
+            <End Role="WharehouseItems" EntitySet="WharehouseItems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EFDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customer_Email" />
+          </Key>
+          <Property Name="customer_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Demands" Relationship="Self.FK_Demands_customer" FromRole="customer" ToRole="Demands" />
+        </EntityType>
+        <EntityType Name="Demand">
+          <Key>
+            <PropertyRef Name="Customer_Email" />
+            <PropertyRef Name="Wharehouse_Name" />
+            <PropertyRef Name="item_code" />
+          </Key>
+          <Property Name="Customer_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Wharehouse_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="item_code" Type="Int32" Nullable="false" />
+          <Property Name="demand_Code" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="quantity" Type="Int32" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_Demands_customer" FromRole="Demands" ToRole="customer" />
+          <NavigationProperty Name="item" Relationship="Self.FK_Demands_item" FromRole="Demands" ToRole="item" />
+          <NavigationProperty Name="Wharehouse" Relationship="Self.FK_Demands_Wharehouse" FromRole="Demands" ToRole="Wharehouse" />
+        </EntityType>
+        <EntityType Name="item">
+          <Key>
+            <PropertyRef Name="item_code" />
+          </Key>
+          <Property Name="item_code" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Demands" Relationship="Self.FK_Demands_item" FromRole="item" ToRole="Demands" />
+          <NavigationProperty Name="itemMeausureUnits" Relationship="Self.FK_itemMeausureUnits_item" FromRole="item" ToRole="itemMeausureUnits" />
+          <NavigationProperty Name="Supplies" Relationship="Self.FK_Supplies_item" FromRole="item" ToRole="Supplies" />
+          <NavigationProperty Name="WharehouseItems" Relationship="Self.FK_WharehouseItems_item" FromRole="item" ToRole="WharehouseItems" />
+        </EntityType>
+        <EntityType Name="itemMeausureUnit">
+          <Key>
+            <PropertyRef Name="item_code" />
+            <PropertyRef Name="meausure_unit_name" />
+          </Key>
+          <Property Name="item_code" Type="Int32" Nullable="false" />
+          <Property Name="meausure_unit_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="item" Relationship="Self.FK_itemMeausureUnits_item" FromRole="itemMeausureUnits" ToRole="item" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Supplier_Email" />
+          </Key>
+          <Property Name="Supplier_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Supplies" Relationship="Self.FK_Supplies_Supplier" FromRole="Supplier" ToRole="Supplies" />
+        </EntityType>
+        <EntityType Name="Supply">
+          <Key>
+            <PropertyRef Name="supplier_Email" />
+            <PropertyRef Name="Wharehouse_Name" />
+            <PropertyRef Name="item_code" />
+          </Key>
+          <Property Name="supplier_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Wharehouse_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="item_code" Type="Int32" Nullable="false" />
+          <Property Name="supply_code" Type="Int32" />
+          <Property Name="data" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="Expiredays" Type="DateTime" Precision="0" />
+          <Property Name="productionDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="item" Relationship="Self.FK_Supplies_item" FromRole="Supplies" ToRole="item" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Supplies_Supplier" FromRole="Supplies" ToRole="Supplier" />
+          <NavigationProperty Name="Wharehouse" Relationship="Self.FK_Supplies_Wharehouse" FromRole="Supplies" ToRole="Wharehouse" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Wharehouse">
+          <Key>
+            <PropertyRef Name="Warehouse_Name" />
+          </Key>
+          <Property Name="Warehouse_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Manager_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Demands" Relationship="Self.FK_Demands_Wharehouse" FromRole="Wharehouse" ToRole="Demands" />
+          <NavigationProperty Name="Supplies" Relationship="Self.FK_Supplies_Wharehouse" FromRole="Wharehouse" ToRole="Supplies" />
+          <NavigationProperty Name="WharehouseItems" Relationship="Self.FK_WharehouseItems_Wharehouse" FromRole="Wharehouse" ToRole="WharehouseItems" />
+        </EntityType>
+        <EntityType Name="WharehouseItem">
+          <Key>
+            <PropertyRef Name="Wharehouse_Name" />
+            <PropertyRef Name="Item_Code" />
+          </Key>
+          <Property Name="Wharehouse_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Item_Code" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="item" Relationship="Self.FK_WharehouseItems_item" FromRole="WharehouseItems" ToRole="item" />
+          <NavigationProperty Name="Wharehouse" Relationship="Self.FK_WharehouseItems_Wharehouse" FromRole="WharehouseItems" ToRole="Wharehouse" />
+        </EntityType>
+        <Association Name="FK_Demands_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="Demands" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customer_Email" />
+            </Principal>
+            <Dependent Role="Demands">
+              <PropertyRef Name="Customer_Email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demands_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="Demands" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="item_code" />
+            </Principal>
+            <Dependent Role="Demands">
+              <PropertyRef Name="item_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demands_Wharehouse">
+          <End Role="Wharehouse" Type="Self.Wharehouse" Multiplicity="1" />
+          <End Role="Demands" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wharehouse">
+              <PropertyRef Name="Warehouse_Name" />
+            </Principal>
+            <Dependent Role="Demands">
+              <PropertyRef Name="Wharehouse_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_itemMeausureUnits_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="itemMeausureUnits" Type="Self.itemMeausureUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="item_code" />
+            </Principal>
+            <Dependent Role="itemMeausureUnits">
+              <PropertyRef Name="item_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplies_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="Supplies" Type="Self.Supply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="item_code" />
+            </Principal>
+            <Dependent Role="Supplies">
+              <PropertyRef Name="item_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WharehouseItems_item">
+          <End Role="item" Type="Self.item" Multiplicity="1" />
+          <End Role="WharehouseItems" Type="Self.WharehouseItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="item_code" />
+            </Principal>
+            <Dependent Role="WharehouseItems">
+              <PropertyRef Name="Item_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplies_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Supplies" Type="Self.Supply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Supplier_Email" />
+            </Principal>
+            <Dependent Role="Supplies">
+              <PropertyRef Name="supplier_Email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplies_Wharehouse">
+          <End Role="Wharehouse" Type="Self.Wharehouse" Multiplicity="1" />
+          <End Role="Supplies" Type="Self.Supply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wharehouse">
+              <PropertyRef Name="Warehouse_Name" />
+            </Principal>
+            <Dependent Role="Supplies">
+              <PropertyRef Name="Wharehouse_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WharehouseItems_Wharehouse">
+          <End Role="Wharehouse" Type="Self.Wharehouse" Multiplicity="1" />
+          <End Role="WharehouseItems" Type="Self.WharehouseItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wharehouse">
+              <PropertyRef Name="Warehouse_Name" />
+            </Principal>
+            <Dependent Role="WharehouseItems">
+              <PropertyRef Name="Wharehouse_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EFDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="Demands" EntityType="Self.Demand" />
+          <EntitySet Name="items" EntityType="Self.item" />
+          <EntitySet Name="itemMeausureUnits" EntityType="Self.itemMeausureUnit" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="Supplies" EntityType="Self.Supply" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Wharehouses" EntityType="Self.Wharehouse" />
+          <EntitySet Name="WharehouseItems" EntityType="Self.WharehouseItem" />
+          <AssociationSet Name="FK_Demands_customer" Association="Self.FK_Demands_customer">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="Demands" EntitySet="Demands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demands_item" Association="Self.FK_Demands_item">
+            <End Role="item" EntitySet="items" />
+            <End Role="Demands" EntitySet="Demands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demands_Wharehouse" Association="Self.FK_Demands_Wharehouse">
+            <End Role="Wharehouse" EntitySet="Wharehouses" />
+            <End Role="Demands" EntitySet="Demands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_itemMeausureUnits_item" Association="Self.FK_itemMeausureUnits_item">
+            <End Role="item" EntitySet="items" />
+            <End Role="itemMeausureUnits" EntitySet="itemMeausureUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplies_item" Association="Self.FK_Supplies_item">
+            <End Role="item" EntitySet="items" />
+            <End Role="Supplies" EntitySet="Supplies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WharehouseItems_item" Association="Self.FK_WharehouseItems_item">
+            <End Role="item" EntitySet="items" />
+            <End Role="WharehouseItems" EntitySet="WharehouseItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplies_Supplier" Association="Self.FK_Supplies_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Supplies" EntitySet="Supplies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplies_Wharehouse" Association="Self.FK_Supplies_Wharehouse">
+            <End Role="Wharehouse" EntitySet="Wharehouses" />
+            <End Role="Supplies" EntitySet="Supplies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WharehouseItems_Wharehouse" Association="Self.FK_WharehouseItems_Wharehouse">
+            <End Role="Wharehouse" EntitySet="Wharehouses" />
+            <End Role="WharehouseItems" EntitySet="WharehouseItems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EFDBModelStoreContainer" CdmEntityContainer="EFDBEntities">
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="EFDBModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="customer_Email" ColumnName="customer_Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Demands">
+            <EntityTypeMapping TypeName="EFDBModel.Demand">
+              <MappingFragment StoreEntitySet="Demands">
+                <ScalarProperty Name="Customer_Email" ColumnName="Customer_Email" />
+                <ScalarProperty Name="Wharehouse_Name" ColumnName="Wharehouse_Name" />
+                <ScalarProperty Name="item_code" ColumnName="item_code" />
+                <ScalarProperty Name="demand_Code" ColumnName="demand_Code" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="items">
+            <EntityTypeMapping TypeName="EFDBModel.item">
+              <MappingFragment StoreEntitySet="item">
+                <ScalarProperty Name="item_code" ColumnName="item_code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="itemMeausureUnits">
+            <EntityTypeMapping TypeName="EFDBModel.itemMeausureUnit">
+              <MappingFragment StoreEntitySet="itemMeausureUnits">
+                <ScalarProperty Name="item_code" ColumnName="item_code" />
+                <ScalarProperty Name="meausure_unit_name" ColumnName="meausure_unit_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="EFDBModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Supplier_Email" ColumnName="Supplier_Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplies">
+            <EntityTypeMapping TypeName="EFDBModel.Supply">
+              <MappingFragment StoreEntitySet="Supplies">
+                <ScalarProperty Name="supplier_Email" ColumnName="supplier_Email" />
+                <ScalarProperty Name="Wharehouse_Name" ColumnName="Wharehouse_Name" />
+                <ScalarProperty Name="item_code" ColumnName="item_code" />
+                <ScalarProperty Name="supply_code" ColumnName="supply_code" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="Expiredays" ColumnName="Expiredays" />
+                <ScalarProperty Name="productionDate" ColumnName="productionDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EFDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wharehouses">
+            <EntityTypeMapping TypeName="EFDBModel.Wharehouse">
+              <MappingFragment StoreEntitySet="Wharehouse">
+                <ScalarProperty Name="Warehouse_Name" ColumnName="Warehouse_Name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="Manager_Name" ColumnName="Manager_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WharehouseItems">
+            <EntityTypeMapping TypeName="EFDBModel.WharehouseItem">
+              <MappingFragment StoreEntitySet="WharehouseItems">
+                <ScalarProperty Name="Wharehouse_Name" ColumnName="Wharehouse_Name" />
+                <ScalarProperty Name="Item_Code" ColumnName="Item_Code" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

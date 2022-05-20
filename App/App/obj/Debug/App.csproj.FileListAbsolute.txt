@@ -1,0 +1,99 @@
+D:\Tsks_ITI\LINQ\final project\App\App\bin\Debug\App.exe.config
+D:\Tsks_ITI\LINQ\final project\App\App\bin\Debug\App.exe
+D:\Tsks_ITI\LINQ\final project\App\App\bin\Debug\App.pdb
+D:\Tsks_ITI\LINQ\final project\App\App\bin\Debug\EntityFramework.dll
+D:\Tsks_ITI\LINQ\final project\App\App\bin\Debug\EntityFramework.SqlServer.dll
+D:\Tsks_ITI\LINQ\final project\App\App\bin\Debug\EntityFramework.xml
+D:\Tsks_ITI\LINQ\final project\App\App\bin\Debug\EntityFramework.SqlServer.xml
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.csproj.AssemblyReference.cache
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.Form1.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.Properties.Resources.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.csproj.GenerateResource.cache
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.csproj.CoreCompileInputs.cache
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.csproj.CopyComplete
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.exe
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.pdb
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.FormSupplier.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.FormCustomer.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.FormSupplies.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.FormDemands.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.transfareItems.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.login.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.formitem.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.home.resources
+D:\Tsks_ITI\LINQ\final project\App\App\bin\Debug\Microsoft.ReportViewer.Common.dll
+D:\Tsks_ITI\LINQ\final project\App\App\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+D:\Tsks_ITI\LINQ\final project\App\App\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\Tsks_ITI\LINQ\final project\App\App\bin\Debug\Microsoft.SqlServer.Types.dll
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.reports.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.wharehouseReport.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.itemReport.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.moveItemsReport.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.exprationDateReport.resources
+D:\Tsks_ITI\LINQ\final project\App\App\obj\Debug\App.itemPeriodOftimeReport.resources
+D:\Tsks_ITI\project entity\project\App\App\bin\Debug\App.exe.config
+D:\Tsks_ITI\project entity\project\App\App\bin\Debug\App.exe
+D:\Tsks_ITI\project entity\project\App\App\bin\Debug\App.pdb
+D:\Tsks_ITI\project entity\project\App\App\bin\Debug\EntityFramework.dll
+D:\Tsks_ITI\project entity\project\App\App\bin\Debug\EntityFramework.SqlServer.dll
+D:\Tsks_ITI\project entity\project\App\App\bin\Debug\Microsoft.ReportViewer.Common.dll
+D:\Tsks_ITI\project entity\project\App\App\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+D:\Tsks_ITI\project entity\project\App\App\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\Tsks_ITI\project entity\project\App\App\bin\Debug\Microsoft.SqlServer.Types.dll
+D:\Tsks_ITI\project entity\project\App\App\bin\Debug\EntityFramework.xml
+D:\Tsks_ITI\project entity\project\App\App\bin\Debug\EntityFramework.SqlServer.xml
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.csproj.AssemblyReference.cache
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.exprationDateReport.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.Form1.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.FormCustomer.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.FormDemands.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.formitem.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.FormSupplier.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.FormSupplies.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.home.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.itemPeriodOftimeReport.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.itemReport.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.login.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.moveItemsReport.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.Properties.Resources.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.reports.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.transfareItems.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.wharehouseReport.resources
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.csproj.GenerateResource.cache
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.csproj.CoreCompileInputs.cache
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.csproj.CopyComplete
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.exe
+D:\Tsks_ITI\project entity\project\App\App\obj\Debug\App.pdb
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\bin\Debug\App.exe.config
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\bin\Debug\App.exe
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\bin\Debug\App.pdb
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\bin\Debug\EntityFramework.dll
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\bin\Debug\EntityFramework.SqlServer.dll
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\bin\Debug\Microsoft.ReportViewer.Common.dll
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\bin\Debug\Microsoft.SqlServer.Types.dll
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\bin\Debug\EntityFramework.xml
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\bin\Debug\EntityFramework.SqlServer.xml
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.csproj.AssemblyReference.cache
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.exprationDateReport.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.Form1.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.FormCustomer.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.FormDemands.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.formitem.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.FormSupplier.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.FormSupplies.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.home.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.itemPeriodOftimeReport.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.itemReport.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.login.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.moveItemsReport.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.Properties.Resources.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.reports.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.transfareItems.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.wharehouseReport.resources
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.csproj.GenerateResource.cache
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.csproj.CoreCompileInputs.cache
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.csproj.CopyComplete
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.exe
+D:\Tsks_ITI\project entity\project Linq & EF\App\App\obj\Debug\App.pdb
